@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>i have a dream
+    </title>
+  </head>
+
+  <body>
+    <h1 id="text"> main 1 </h1>
+     <input type="button" value="CLICK AND CHANGE "  onclick="text();" />
+    
+   
+
+  <input type="button" value=" see "onclick="see();" />
+
+  <input type="button" value=" hide "onclick="hello();" />
+    
+   <button onclick="onoff()" value="On" id="onoff" >Click me</button>
+
+ 
+  <input type="range" id="on" name="points" step="0.1" min="0" max="10">
+  <input type="range" id="knob3" name="points" step="0.1" min="0" max="10">
+
+
+ <input type="range" id="kn"  name="points" step="0.1" min="0" max="10">
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+<p id="name">Web-audio page on</p>
+<p id="demo">b</p>
+<p id="kno">a</p>
+    <script>
+
+
+
+ var socket = io();
+
+    var knob3 = document.getElementById('knob3');
+       knob3.addEventListener("change",knob33,false);
+
+       function knob33(data) {
+      
+     var  str= data.target.value 
+
+       socket.emit('1', str);
+       }
+ 
+     socket.on('1',function(str){ 
+     document.getElementById('kno').innerHTML = str ;
+     document.getElementById('kn').value = str ;
+
+
+
+    });
+
+
+
+
+      function see(){
+     
+       socket.emit('user', 'data');
+      }
+
+      socket.on('user', function(){ 
+      document.getElementById('name').innerHTML="see";
+      
+      });
+
+
+      function hello(){
+
+       socket.emit('star', 'data');
+      }
+
+      socket.on('star', function(){ 
+      document.getElementById('name').innerHTML="hide";
+      
+      });
+
+
+
+
+    </script>
+   
+  </body>
+</html>
