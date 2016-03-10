@@ -65,8 +65,10 @@ socket.on('10', function(str){
  io.emit('10',str);
 });
 
-
-
+socket.on('user', function(data){
+   console.log('12345');
+ io.emit('user','data');
+ });
 
 socket.on('star', function(data){
    console.log('12345');
@@ -90,6 +92,12 @@ socket.on('star', function(data){
 
  
 });
+
+
+
+
+
+
 
 
 
