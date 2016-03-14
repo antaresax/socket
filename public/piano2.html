@@ -73,6 +73,7 @@ body {
 
    
       #jb-header {
+         background:url(sss.png);
              width: 670px;
         padding: 0px;
         margin-bottom: 0px;
@@ -81,13 +82,16 @@ body {
 
       }
       #jb-content {
+        background:url(a.png);
+        
         width: 670px;
       
         padding: 20px;
         margin-bottom: 20px;
         float: left;
         border: 2px solid #484848;
-          border-radius: 25px;
+          border-radius: 40px;
+         
       }
       #jb-sidebar {
         width: 670px;
@@ -175,6 +179,7 @@ ul.tab li a:focus, .active {
   <li><a href="#" class="tablinks" onclick="openCity(event, 'London')">Pitch</a></li>
   <li><a href="#" class="tablinks" onclick="openCity(event, 'Paris')">Mod</a></li>
   <li><a href="#" class="tablinks" onclick="openCity(event, 'Tokyo')">Volum</a></li>
+    <li><a href="#" class="tablinks" onclick="openCity(event, 'Close')">Close</a></li>
 </ul>
 
 
@@ -195,6 +200,7 @@ ul.tab li a:focus, .active {
 <div id="Paris" class="tabcontent">
   <h3>Paris</h3>
   <p>Paris is the capital of France.</p> 
+       <webaudio-slider  style="display:inline-block; margin:10px;" src="cont/img/hsliderbody.png" knobsrc="cont/img/hsliderknob.png" direction="hor"value="0" min="0" max="100" step="1" width="290" baseheight="50" knobwidth="24" knobheight="24" ditchLength="0" tooltip="Slider-L"></webaudio-slider>
 </div>
 
 <div id="Tokyo" class="tabcontent">
@@ -219,20 +225,17 @@ ul.tab li a:focus, .active {
 
     <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/dde.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
 
-<font  style="display:inline-block; margin:0px;"  color="gray" size="3" > 
- <pre  >  Carrier   Modulating   Tremolo     </pre>
+<font  style="display:inline-block; margin:0px;"  color="black" size="3" > 
+ <pre  >  Carrier  Modulating   Tremolo     </pre>
+   <p  >CSS is a stylesheet language that describes the presentation of an HTML (or XML) document.
 
+CSS describes how elements must be rendered on screen, on paper, or in other media.
+
+ </p>
 
                </div>
  
 
-  <div id="jb-sidebar">
-      
-     <p style="color:white;" >   &nbsp;  Ampulitede Modulation </p> 
-      <webaudio-slider  style="display:inline-block; margin:0px;" src="cont/img/hsliderbody.png" knobsrc="cont/img/hsliderknob.png" direction="hor"value="0" min="0" max="100" step="1" width="280" baseheight="24" knobwidth="24" knobheight="24" ditchLength="0" tooltip="Slider-L"></webaudio-slider>
-             
-               </div>
- 
 
 
 
