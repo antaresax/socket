@@ -1,39 +1,109 @@
 <!doctype html>
 <html lang="ko">
   <head>
+    <script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+
+
     <meta charset="utf-8">
  
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <style>
+ 
 body {
-    background-color: ;
+    background-color:#282828; 
 }
 </style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
 
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
     <style>
 
    
       #jb-header {
+         background:url(sss.png);
+             width: 670px;
         padding: 0px;
         margin-bottom: 0px;
-        border: 0px solid #bcbcbc;
+        border: 2px solid #484848;
+        border-radius: 25px;
 
       }
       #jb-content {
-        width: 650px;
+        background:url(a.png);
+        
+        width: 670px;
       
         padding: 20px;
         margin-bottom: 20px;
         float: left;
-        border: 1px solid #bcbcbc;
+        border: 2px solid #484848;
+          border-radius: 40px;
+         
       }
       #jb-sidebar {
-        width: 650px;
-         height: 150px;
+        width: 670px;
+      
         padding: 20px;
         margin-right: 0px;
         float: right;
-        border: 1px solid #bcbcbc;
+        border: 1px solid #484848;
+         border-radius: 25px;
       }
    
       @media screen and (max-width:480px) {
@@ -59,13 +129,14 @@ ul.tab {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: yellow;
+    border: 0.1px solid #484848;
+    background-color: #484848;
+     border-radius: 10px;
 }
 
 /* Float the list items side by side */
 ul.tab li {float: left;
-  border: 0.1px solid black;}
+  border: 2px solid #484848;}
 
 /* Style the links inside the list items */
 ul.tab li a {
@@ -92,53 +163,125 @@ ul.tab li a:focus, .active {
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid #484848;
     border-top: none;
+     border-radius: 25px;
 }
 </style>
+<style>
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center; 
+  text-decoration: none;
+  outline: none;
+  color: white;
+  background-color: black;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #242424}
+
+.button:active {
+  background-color: #484848;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+  <p id="text1"> a</p>
   </head>
   <body>
   
       <div id="jb-header">
       
-           <h3 id="text"> Piano API </h3>
+     <p style="color:white;" >   &nbsp;  Ampulitede Modulation </p> 
+               </div>
  
 
   <ul class="tab">
   <li><a href="#" class="tablinks" onclick="openCity(event, 'London')">Pitch</a></li>
   <li><a href="#" class="tablinks" onclick="openCity(event, 'Paris')">Mod</a></li>
-  <li><a href="#" class="tablinks" onclick="openCity(event, 'Tokyo')">Volum</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Tokyo')">Talk</a></li>
+    <li><a href="#" class="tablinks" onclick="openCity(event, 'Close')">Close</a></li>
 </ul>
+
 
 
 <div id="London" class="tabcontent">
   <h3>London</h3>
-     <input type="button" value="CLICK AND CHANGE " 
-     onclick="text();" />
-    <input type="button" value="start" onclick="osc.start();" />
-     <input type="button" value="stop" onclick="stop();" />
-<input type="button" value="Do you like me?" id="poke" />
-  <input type="button" value=" How old are you? "onclick="hello();" />
-
-
+   
 </div>
+
+
+
 
 <div id="Paris" class="tabcontent">
   <h3>Paris</h3>
   <p>Paris is the capital of France.</p> 
+       <webaudio-slider  style="display:inline-block; margin:10px;" src="cont/img/hsliderbody.png" knobsrc="cont/img/hsliderknob.png" direction="hor"value="0" min="0" max="100" step="1" width="290" baseheight="50" knobwidth="24" knobheight="24" ditchLength="0" tooltip="Slider-L"></webaudio-slider>
 </div>
 
+
+
+
+
 <div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
-      </div>
-      <div id="jb-content">
-        <h2>Content</h2>
-   
-      </div>
+  <h3>Talk box</h3>
+ 
     
+     <button class="button" onclick="text();">Talk</button>
+</div>
+</div>
+
+
+  <div id="jb-content">
+      
+     <p style="color:white;" >   &nbsp;  Ampulitede Modulation </p> 
+
+    
+  </body>
+ 
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+     <webaudio-knob id="knob1" 
+  style="display:inline-block; margin:0px;" 
+      src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/dde.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+<font  style="display:inline-block; margin:0px;"  color="black" size="3" > 
+ <pre  >  Carrier  Modulating   Tremolo     </pre>
+   <p  >CSS is a stylesheet language that describes the presentation of an HTML (or XML) document.
+
+CSS describes how elements must be rendered on screen, on paper, or in other media.
+
+ </p>
+
+               </div>
+ 
+
+
+
+
+      <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Open</a>
+  <div class="overlay-content">
+    <a href="#">Sound Generator </a>
+    <a href="#">Feel free to enjoy</a>
+
+  </div>
+    
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
+
       <script>
+
+
 function openCity(evt, cityName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -153,6 +296,54 @@ function openCity(evt, cityName) {
     evt.currentTarget.classList.add("active");
 }
 </script>
-    
-  </body>
+<script>
+
+
+
+window.onload = function(){ 
+   openNav();
+  //openCity(event, 'London');
+  
+    // obj.value = "날코천재"; 
+}
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+
+
+ var socket = io();
+function text() {
+
+var  text;  
+
+text = prompt (" hi Dr.Hong ");
+
+
+socket.emit('10',text);
+
+}
+
+
+ socket.on('10',function(text){ 
+document.getElementById("text1").innerText = text;
+
+
+
+    });
+///////////////////////////////////////////////
+ //socket.on('id',function(id){ 
+
+  //document.getElementById("aaa").innerText =;
+
+    //});
+
+
+</script>
+<p id="text1"> Taking..</p>
+
 </html>
