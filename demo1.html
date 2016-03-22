@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <script src="cont/js/platform.js"></script>
+<link rel="import" href="cont/webcomponents/polymer.html">
+<link rel="import" href="cont/webcomponents/controls.html">
+    <meta charset="utf-8">
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+ 
+body {
+    background-color:#282828; 
+}
+</style>
+
+    <style > 
+#ver{
+
+   top: 40%;
+   transform: rotate(270deg);
+}
+#ver {
+  -webkit-appearance: none;
+  margin: 10px ;
+  width: 20%;
+}
+#ver:focus {
+  outline: none;
+}
+#ver::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: gray;
+
+}
+#ver::-webkit-slider-thumb {
+
+  height: 20px;
+  width: 15px;
+  border-radius: 3px;
+  background: black;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -7.6px;
+}
+
+}
+
+</style>
+<style>
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px !important;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .closebtn {
+    font-size: 40px !important;
+    top: 15px;
+    right: 35px;
+  }
+}
+</style>
+    <style>
+
+   
+      #jb-header {
+         background:url(sss.png);
+             width: 670px;
+        padding: 0px;
+        margin-bottom: 0px;
+        border: 2px solid #484848;
+        border-radius: 25px;
+
+      }
+      #jb-content {
+        background:url(a.png);
+        
+        width: 670px;
+      
+        padding: 20px;
+        margin-bottom: 20px;
+        float: left;
+        border: 2px solid #484848;
+          border-radius: 40px;
+         
+      }
+      #jb-sidebar {
+        width: 670px;
+      
+        padding: 20px;
+        margin-right: 0px;
+        float: right;
+        border: 1px solid #484848;
+         border-radius: 25px;
+      }
+   
+      @media screen and (max-width:480px) {
+        #jb-header {
+          width: auto;
+        }
+        #jb-content {
+          float: none;
+          width: auto;
+        }
+        #jb-sidebar {
+          float: none;
+          width: auto;
+        }
+      }
+
+    </style>
+    <style>
+body {font-family: "Lato", sans-serif;}
+
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0.1px solid #484848;
+    background-color: #484848;
+     border-radius: 10px;
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;
+  border: 2px solid #484848;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: white;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #484848;
+    border-top: none;
+     border-radius: 25px;
+}
+</style>
+
+  </head>
+  <body>
+  
+      <div id="jb-header">
+      
+     <p style="color:white;" >   &nbsp;  Ampulitede Modulation </p> 
+               </div>
+ 
+
+  <ul class="tab">
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'London')">Osc type</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Paris')">Mod</a></li>
+  <li><a href="#" class="tablinks" onclick="openCity(event, 'Tokyo')">Volum</a></li>
+    <li><a href="#" class="tablinks" onclick="openCity(event, 'Close')">Close</a></li>
+</ul>
+
+
+
+<div id="London" class="tabcontent">
+  <h3>Osillater type</h3>
+
+  <input type="radio" style="display:inline-block; margin:0px; "   name="hong" value="2" onClick="osc.type = 'sawtooth';" /> 
+<p style="display:inline-block; margin:0px; "  >  Sawtooh &nbsp </p>
+  <input type="radio" style="display:inline-block; margin:0px; " name="hong" value="2" onClick= "osc.type = 'square';"/> <p style="display:inline-block; margin:0px; "  >Square    </p>
+     
+</div>
+
+
+
+
+<div id="Paris" class="tabcontent">
+  <h3>Modulation</h3>
+
+       <webaudio-slider  style="display:inline-block; margin:10px;" src="cont/img/hsliderbody.png" knobsrc="cont/img/hsliderknob.png" direction="hor"value="0" min="0" max="100" step="1" width="290" baseheight="50" knobwidth="24" knobheight="24" ditchLength="0" tooltip="Slider-L"></webaudio-slider>
+</div>
+
+<div id="Tokyo" class="tabcontent">
+  <h3>Dial</h3>
+
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+     <webaudio-knob id="knob1" 
+  style="display:inline-block; margin:0px;" 
+      src="cont/img/sam.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/dde.png" value="0" max="2000" step="1" diameter="83" sprites="30"  ></webaudio-knob>
+
+      <pre  >  Carrier  Modulating   Tremolo     </pre> 
+</div>
+</div>
+
+
+  <div id="jb-content">
+      
+     <p style="color:white;" >   &nbsp;  Ampulitede Modulation </p> <br>
+
+
+    <input type="range" style="display:inline-block; margin:10px;"  value="100" step="1" id ="ver" min="0" max="100" ></input>
+    <input type="range" style="display:inline-block; margin:10px;"  value="100" step="1" id ="ver" min="0" max="100" ></input>
+ 
+     <input type="range"  style="display:inline-block; margin:10px;" value="100" step="1" id ="ver" min="0" max="100" ></input>
+ 
+
+<font  style="display:inline-block; margin:0px;"  color="black" size="3" > 
+
+ <pre  >  
+
+  Carrier   Modulating   Tremolo     </pre>
+   <p  >You can monitor your value of dial.
+
+ </p>
+
+               </div>
+ 
+
+
+    
+  </body>
+
+      <div id="myNav" class="overlay">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">open</a>
+  <div class="overlay-content">
+    <a href="#">Do you know Dr.Hong?</a>
+    <a href="#">Feel free to enjoy</a>
+
+  </div>
+    
+
+
+      <script>
+function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tabcontent.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+}
+</script>
+<script>
+
+window.onload = function(){ 
+   openNav();
+  //openCity(event, 'London');
+  
+    // obj.value = "날코천재"; 
+}
+
+function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+}
+</script>
+
+    
+
+</html>
