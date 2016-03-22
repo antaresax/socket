@@ -7,6 +7,7 @@
     <meta charset="utf-8">
  
     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <p id="text1"> a</p> 
     <style>
  
 body {
@@ -120,6 +121,7 @@ body {
     </style>
    
 
+       <input type="button" value="CLICK "  onclick="text();" />
   </head>
   <body>
   
@@ -128,11 +130,11 @@ body {
   <div id="jb-content">
       
      <p style="color:white;" >   &nbsp;  Ampulitede Modulation </p> 
-
+   
     
   </body>
  
-    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/knoo.png" value="0" max="2000" step="1" diameter="110" sprites="30"  ></webaudio-knob>
+    <webaudio-knob id="knob" style="display:inline-block; margin:0px;"  src="cont/img/knoo.png" value="0" max="2000" step="1" diameter="110" sprites="30"  ></webaudio-knob>
 
    <webaudio-knob id="knob1" style="display:inline-block; margin:0px;"  src="cont/img/ver.png" value="0" max="2000" step="1" diameter="110" sprites="50"  ></webaudio-knob>
 
@@ -147,8 +149,8 @@ body {
 CSS describes how elements must be rendered on screen, on paper, or in other media.
 
  </p>
- <webaudio-keyboard id="key1"  value="0" direction="" max="1000" step="1" keys="30" width="300" height="100"
-  style="display:inline-block;border:10px; margin:0px;"  </webaudio-keyboard>
+ <webaudio-keyboard id="key1"  value="0" direction="" max="1000" step="1" keys="15" width="300" height="100"
+   </webaudio-keyboard>
                </div>
  
 
@@ -156,13 +158,16 @@ CSS describes how elements must be rendered on screen, on paper, or in other med
 
 
       <div id="myNav" class="overlay">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Enter</a>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">Open</a>
   <div class="overlay-content">
-    <a href="#">Do you know Dr.Hong?</a>
+    <a href="#">Low-frequency oscillation</a>
     <a href="#">Feel free to enjoy</a>
 
   </div>
     
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.js"></script>
 
 
       <script>
@@ -197,7 +202,55 @@ function closeNav() {
     document.getElementById("myNav").style.width = "0%";
 }
 </script>
+  <script>
 
+
+
+ var socket = io();
+
+  
+
+
+
+  
+ 
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+
+function text() {
+
+var  text;  
+
+text = prompt (" hi Dr.Hong ");
+
+
+socket.emit('10',text);
+
+}
+
+ socket.on('10',function(text){ 
+document.getElementById("text1").innerText = text;
+
+
+
+    });
+///////////////////////////////////////////////
+ //socket.on('id',function(id){ 
+
+  //document.getElementById("aaa").innerText =;
+
+    //});
+
+
+///////////////////////////////////////////////////////////////////////////////
     
+ 
+
+    </script>
+
+     
+  </body> 
 
 </html>
